@@ -1,6 +1,6 @@
-﻿namespace StudyBuddyAPI.Models.DTO
+﻿namespace StudyBuddyAPI.Models.DTO;
+
+public class FavoritesDTO
 {
-    public class FavoritesDTO
-    {
-    }
+    public Question[] Questions { get; set; }
 }
