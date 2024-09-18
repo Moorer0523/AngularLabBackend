@@ -1,4 +1,7 @@
-﻿namespace StudyBuddyAPI.Models.Dto;
+﻿using Microsoft.EntityFrameworkCore;
+using StudyBuddyAPI.Models;
+
+namespace StudyBuddyAPI.Models.Dto;
 
 public class QuestionDTO
 {
