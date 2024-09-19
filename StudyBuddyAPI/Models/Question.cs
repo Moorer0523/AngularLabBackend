@@ -1,4 +1,6 @@
-﻿namespace StudyBuddyAPI.Models;
+﻿using Microsoft.AspNetCore.OpenApi;
+using Microsoft.AspNetCore.Http.HttpResults;
+namespace StudyBuddyAPI.Models;
 
 public class Question
 {
