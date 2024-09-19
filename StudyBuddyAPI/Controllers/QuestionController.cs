@@ -19,14 +19,14 @@ public class QuestionController : ControllerBase
         _context = context;
     }
 
-    // GET: api/Orders
+    // GET: api/Question
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Question>>> GetQuestions()
     {
         return await _context.Questions.ToListAsync();
     }
 
-    // GET: api/Orders/5
+    // GET: api/Question/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Question>> GetQuestion(int id)
     {
@@ -40,9 +40,9 @@ public class QuestionController : ControllerBase
         return question;
     }
 
-    // PUT: api/Orders/5
+    // PUT: api/Question/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutOrder(int id, [FromBody] QuestionDTO questionDTO)
+    public async Task<IActionResult> PutQuestion(int id, [FromBody] QuestionDTO questionDTO)
     {
         try
         {
@@ -52,10 +52,11 @@ public class QuestionController : ControllerBase
                 return NotFound();
             }
 
-            //Need to redo mapping without automapper
-            Question updatedOrder = questionDTO.toQuestion();
+            Question updatedQuestion = questionDTO.toQuestion();
 
-            _context.Entry(currentQuestion).State = EntityState.Modified;
+            updatedQuestion.Id = id;
+
+            _context.Entry(updatedQuestion).State = EntityState.Modified;
 
             await _context.SaveChangesAsync();
         }
@@ -67,9 +68,9 @@ public class QuestionController : ControllerBase
         return NoContent();
     }
 
-    // POST: api/Orders
+    // POST: api/Question
     [HttpPost]
-    public async Task<ActionResult<Question>> PostOrder([FromBody] QuestionDTO questionDTO)
+    public async Task<ActionResult<Question>> PostQuestion([FromBody] QuestionDTO questionDTO)
     {
         //need to redo mapping without automapper
         Question question = questionDTO.toQuestion();
@@ -79,9 +80,9 @@ public class QuestionController : ControllerBase
         return CreatedAtAction("GetQuestion", new { id = question.Id }, question);
     }
 
-    // DELETE: api/Orders/5
+    // DELETE: api/Question/5
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteOrder(int id)
+    public async Task<IActionResult> DeleteQuestion(int id)
     {
         var question = await _context.Questions.FindAsync(id);
         if (question == null)
