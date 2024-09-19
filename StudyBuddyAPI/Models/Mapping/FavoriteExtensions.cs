@@ -14,8 +14,9 @@ namespace StudyBuddyAPI.Models.Mapping
 
         public static void UpdateFavorites(this Favorites currentFavorites, FavoritesDTO updatedfavoritesDTO)
         {
-            currentFavorites.FavoriteQuestions = updatedfavoritesDTO.FavoriteQuestions;
             currentFavorites.UserId = updatedfavoritesDTO.UserId;
+            currentFavorites.FavoriteQuestions = updatedfavoritesDTO.FavoriteQuestions;
+
         }
     }
 }
