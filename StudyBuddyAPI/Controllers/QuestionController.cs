@@ -52,11 +52,9 @@ public class QuestionController : ControllerBase
                 return NotFound();
             }
 
-            Question updatedQuestion = questionDTO.toQuestion();
+            currentQuestion.updateQuestion(questionDTO);
 
-            updatedQuestion.Id = id;
-
-            _context.Entry(updatedQuestion).State = EntityState.Modified;
+            _context.Update(currentQuestion);
 
             await _context.SaveChangesAsync();
         }

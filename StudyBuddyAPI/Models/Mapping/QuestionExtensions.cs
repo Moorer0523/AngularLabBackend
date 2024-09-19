@@ -15,4 +15,13 @@ public static class QuestionExtensions
             IsFavorite = questionDTO.IsFavorite
         };
     }
+    public static void updateQuestion(this Question question,QuestionDTO questionDTO)
+    {
+        {
+            question.QuestionText = questionDTO.QuestionText;
+            question.QuestionOptions = questionDTO.QuestionOptions;
+            question.Answers = questionDTO.Answers;
+            question.IsFavorite = questionDTO.IsFavorite;
+        };
+    }
 }
