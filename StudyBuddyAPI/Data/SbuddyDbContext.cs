@@ -12,4 +12,5 @@ public class SbuddyDbContext : DbContext
     }
 
     public DbSet<Question> Questions { get; set; }
+    public DbSet<Favorites> Favorites { get; set; }
 }
