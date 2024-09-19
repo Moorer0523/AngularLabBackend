@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using StudyBuddyAPI.Data;
 using StudyBuddyAPI.Models;
 using StudyBuddyAPI.Models.Dto;
+using StudyBuddyAPI.Models.Mapping;
 
 namespace StudyBuddyAPI.Controllers;
 
@@ -52,7 +53,7 @@ public class QuestionController : ControllerBase
             }
 
             //Need to redo mapping without automapper
-            Question updatedOrder = _mapper.Map(orderInputDTO, currentOrder);
+            Question updatedOrder = questionDTO.toQuestion();
 
             _context.Entry(currentQuestion).State = EntityState.Modified;
 
@@ -68,10 +69,10 @@ public class QuestionController : ControllerBase
 
     // POST: api/Orders
     [HttpPost]
-    public async Task<ActionResult<Question>> PostOrder([FromBody] QuestionDTO QuestionDTO)
+    public async Task<ActionResult<Question>> PostOrder([FromBody] QuestionDTO questionDTO)
     {
         //need to redo mapping without automapper
-        Question question = _mapper.Map<Order>(orderInputDTO);
+        Question question = questionDTO.toQuestion();
         _context.Questions.Add(question);
         await _context.SaveChangesAsync();
 
