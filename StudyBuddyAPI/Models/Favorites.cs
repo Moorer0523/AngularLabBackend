@@ -7,3 +7,4 @@ public class Favorites
     public int[] FavoriteQuestions { get; set; }
 
 }
+
