@@ -54,11 +54,9 @@ namespace StudyBuddyAPI.Controllers
                 }
 
                 //Need to redo mapping without automapper
-                Favorites updatedFavorites = favoritesDTO.toFavorites();
+                currentFavorites.UpdateFavorites(favoritesDTO);
 
-                updatedFavorites.FavoriteId = id;
-
-                _context.Entry(updatedFavorites).State = EntityState.Modified;
+                _context.Entry(currentFavorites).State = EntityState.Modified;
 
                 await _context.SaveChangesAsync();
             }
@@ -75,11 +73,11 @@ namespace StudyBuddyAPI.Controllers
         public async Task<ActionResult<Question>> PostOrder([FromBody] FavoritesDTO favoritesDTO)
         {
             //need to redo mapping without automapper
-            Favorites favorites = favoritesDTO.toQuestion();
-            _context.Questions.Add(favorites);
+            Favorites favorites = favoritesDTO.ToFavorites();
+            _context.Favorites.Add(favorites);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetQuestion", new { id = favorites.Id }, favorites);
+            return CreatedAtAction("GetQuestion", new { id = favorites.FavoriteId }, favorites);
         }
 
         // DELETE: api/Orders/5
