@@ -77,7 +77,7 @@ namespace StudyBuddyAPI.Controllers
             _context.Favorites.Add(favorites);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetQuestion", new { id = favorites.FavoriteId }, favorites);
+            return CreatedAtAction("GetQuestion", new { id = favorites.Id }, favorites);
         }
 
         // DELETE: api/Orders/5
