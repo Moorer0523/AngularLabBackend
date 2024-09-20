@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudyBuddyAPI.Data;
 
@@ -10,9 +11,11 @@ using StudyBuddyAPI.Data;
 namespace StudyBuddyAPI.Migrations
 {
     [DbContext(typeof(SbuddyDbContext))]
-    partial class SbuddyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240920000413_Inital1")]
+    partial class Inital1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
