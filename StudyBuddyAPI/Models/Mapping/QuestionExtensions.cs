@@ -10,18 +10,14 @@ public static class QuestionExtensions
         return new Question()
         {
             QuestionText = questionDTO.QuestionText,
-            QuestionOptions = questionDTO.QuestionOptions,
-            Answers = questionDTO.Answers,
-            IsFavorite = questionDTO.IsFavorite
+            Answer = questionDTO.Answer,
         };
     }
     public static void updateQuestion(this Question question,QuestionDTO questionDTO)
     {
         {
             question.QuestionText = questionDTO.QuestionText;
-            question.QuestionOptions = questionDTO.QuestionOptions;
-            question.Answers = questionDTO.Answers;
-            question.IsFavorite = questionDTO.IsFavorite;
+            question.Answer = questionDTO.Answer;
         };
     }
 }
